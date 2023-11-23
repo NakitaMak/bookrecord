@@ -1,0 +1,165 @@
+set names utf8;
+drop database if exists bookrecord;
+create database bookrecord character set utf8 collate utf8_general_ci;
+
+grant all privileges on bookrecord.* to User@localhost identified by 'test0123';
+
+use bookrecord;
+
+CREATE TABLE audio (
+  ident int AUTO_INCREMENT PRIMARY KEY,
+  book_id int NOT NULL,
+  platform_id int,
+  url varchar(300),
+  code varchar(50)
+);
+
+INSERT INTO audio VALUES 
+(1, 2, 1, 'https://aozoraroudoku.jp/voice/rdp/rd522.html', ''),
+(2, 4, 1, 'https://aozoraroudoku.jp/voice/rdp/rd940.html', ''),
+(3, 8, 2, 'https://www.youtube.com/playlist?list=PLXKMRoeWMiAlr5904uPIftKJ15DJccNQK', 'かなかな'),
+(4, 9, 1, 'https://aozoraroudoku.jp/voice/rdp/rd856.html', '生ひ立ちの歌'),
+(5, 9, 1, 'https://aozoraroudoku.jp/voice/rdp/rd822.html', 'サーカス'),
+(6, 9, 1, 'https://aozoraroudoku.jp/voice/rdp/rd846.html', '雪の宵'),
+(7, 9, 1, 'https://aozoraroudoku.jp/voice/rdp/rd721.html', '汚れつちまつた悲しみに…'),
+(8, 11, 2, 'https://www.youtube.com/watch?v=vLfBKJ9N0sg', 'ンゴちゃん');
+
+CREATE TABLE book (
+  ident int AUTO_INCREMENT PRIMARY KEY,
+  title varchar(30) NOT NULL,
+  author varchar(20) NOT NULL,
+  genre_id int NOT NULL,
+  word_count int,
+  url varchar(300),
+  status int,
+  cp varchar(30),
+  fandom int,
+  dramacd int,
+  mascot varchar(30),
+  remark varchar(50)
+);
+
+INSERT INTO book VALUES 
+(1, '斜陽', '太宰治', 1, 10, 'https://www.aozora.gr.jp/cards/000035/files/1565_8559.html', 2, '', 0, 0, '', ''),
+(2, '走れメロス', '太宰治', 1, 1, 'https://www.aozora.gr.jp/cards/000035/files/1567_14913.html', 2, '', 0, 1, '', ''),
+(3, '人間失格', '太宰治', 1, 8, 'https://www.aozora.gr.jp/cards/000035/files/301_14912.html', 2, '', 0, 0, '', ''),
+(4, '富嶽百景', '太宰治', 1, 2, 'https://www.aozora.gr.jp/cards/000035/files/270_14914.html', 2, '', 0, 1, '', ''),
+(5, 'こころ', '夏目漱石', 1, 18, 'https://www.aozora.gr.jp/cards/000148/files/773_14560.html', 2, '', 0, 0, '', ''),
+(6, '坊ちゃん', '夏目漱石', 1, 10, 'https://www.aozora.gr.jp/cards/000148/files/752_14964.html', 2, '', 0, 0, '', ''),
+(7, '吾輩は猫である', '夏目漱石', 1, 35, 'https://www.aozora.gr.jp/cards/000148/files/752_14964.html', 2, '', 0, 0, '', ''),
+(8, '夢十夜', '夏目漱石', 1, 2, 'https://www.aozora.gr.jp/cards/000148/files/799_14972.html', 2, '', 0, 1, '', ''),
+(9, '山羊の歌', '中原中也', 1, 2, 'https://www.aozora.gr.jp/cards/000026/files/894_28272.html', 2, '', 0, 1, '', ''),
+(10, '蟹工船', '小林多喜二', 1, 7, 'https://www.aozora.gr.jp/cards/000156/files/1465_16805.html', 2, '', 0, 0, '', 'おい地獄さ行ぐんだで！'),
+(11, '銀河鉄道の夜', '宮沢賢治', 1, 4, 'https://www.aozora.gr.jp/cards/000081/files/456_15050.html', 2, '', 0, 0, '', ''),
+(12, 'かがみの孤城', '辻村深月', 2, 0, '', 2, '', 1, 0, '', '映画もある'),
+(13, '図書館ドラゴンは火を吹かない', '東雲祐', 2, 46, 'https://ncode.syosetu.com/n8001by/', 2, '', 1, 0, '', ''),
+(14, '私の幸せな結婚', '顎木あくみ', 2, 0, 'https://lbunko.kadokawa.co.jp/special/watashino/', 1, '', 1, 0, '', 'アニメもある'),
+(15, '異世界薬局', '高山理図', 2, 125, 'https://ncode.syosetu.com/novelview/infotop/ncode/n8541cr/', 2, '', 1, 0, '', ''),
+(16, 'Re：ゼロから始める異世界生活', '長月達平', 2, 783, 'https://ncode.syosetu.com/novelview/infotop/ncode/n2267be/', 1, '', 1, 0, '', '長い'),
+(17, 'ナミヤ雑貨店の奇蹟', '東野圭吾', 3, 0, 'https://www.amazon.co.jp/%E3%83%8A%E3%83%9F%E3%83%A4%E9%9B%91%E8%B2%A8%E5%BA%97%E3%81%AE%E5%A5%87%E8%B9%9F-%E8%A7%92%E5%B7%9D%E6%96%87%E5%BA%AB-%E6%9D%B1%E9%87%8E-%E5%9C%AD%E5%90%BE/dp/4041014514', 2, '', 1, 0, '', ''),
+(18, '虚ろな十字架', '東野圭吾', 3, 0, 'https://www.amazon.co.jp/%E8%99%9A%E3%82%8D%E3%81%AA%E5%8D%81%E5%AD%97%E6%9E%B6-%E5%85%89%E6%96%87%E7%A4%BE%E6%96%87%E5%BA%AB-%E6%9D%B1%E9%87%8E-%E5%9C%AD%E5%90%BE/dp/4334774660', 0, '', 0, 0, '', ''),
+(19, 'D坂の殺人事件', '江戸川乱歩', 1, 2, 'https://www.aozora.gr.jp/cards/001779/files/56650_58209.html', 2, '', 0, 0, '', ''),
+(20, '怪人二十面相', '江戸川乱歩', 1, 11, 'https://www.aozora.gr.jp/cards/001779/files/57228_58735.html', 0, '', 0, 0, '', ''),
+(21, '地獄変', '芥川龍之介', 1, 3, 'https://www.aozora.gr.jp/cards/000879/files/60_15129.html', 2, '', 0, 0, '', ''),
+(22, '河童', '芥川龍之介', 1, 4, 'https://www.aozora.gr.jp/cards/000879/files/69_14933.html', 2, '', 0, 0, '', ''),
+(23, '羅生門', '芥川龍之介', 1, 1, 'https://www.aozora.gr.jp/cards/000879/files/127_15260.html', 2, '', 0, 0, '', ''),
+(24, '武蔵野', '', 1, 2, 'https://www.aozora.gr.jp/cards/000038/files/329_15886.html', 2, '', 0, 0, '', '');
+
+CREATE TABLE genre (
+  ident int AUTO_INCREMENT PRIMARY KEY,
+  name varchar(20) NOT NULL,
+  color varchar(10)
+);
+
+INSERT INTO genre VALUES 
+(1, '文学', '#cd91f2'),
+(2, 'ラノベ', '#fcab86'),
+(3, '推理小説', '#acfcf3');
+
+CREATE TABLE history (
+  ident int AUTO_INCREMENT PRIMARY KEY,
+  history int NOT NULL,
+  book_id int NOT NULL
+);
+
+CREATE TABLE platform (
+  ident int AUTO_INCREMENT PRIMARY KEY,
+  name varchar(20) NOT NULL
+);
+
+INSERT INTO platform VALUES 
+(1, '青空朗読'),
+(2, 'YouTube'),
+(3, 'Amazon'),
+(4, 'Abema');
+
+CREATE TABLE review (
+  ident int AUTO_INCREMENT PRIMARY KEY,
+  book_id int NOT NULL,
+  content varchar(10000)
+);
+
+INSERT INTO review VALUES
+(1, 1, ''),
+(2, 2, ''),
+(3, 3, ''),
+(4, 4, ''),
+(5, 5, ''),
+(6, 6, ''),
+(7, 7, ''),
+(8, 8, ''),
+(9, 9, ''),
+(10, 10, ''),
+(11, 11, ''),
+(12, 12, ''),
+(13, 13, ''),
+(14, 14, ''),
+(15, 15, ''),
+(16, 16, ''),
+(17, 17, ''),
+(18, 18, ''),
+(19, 19, ''),
+(20, 20, ''),
+(21, 21, ''),
+(22, 22, ''),
+(23, 23, ''),
+(24, 24, '');
+
+CREATE TABLE tag (
+  ident int AUTO_INCREMENT PRIMARY KEY,
+  name varchar(20) NOT NULL
+);
+
+INSERT INTO tag VALUES
+(1, '詩'),
+(2, '異世界'),
+(3, 'ミステリー');
+
+CREATE TABLE tag_junction (
+  ident int AUTO_INCREMENT PRIMARY KEY,
+  book_id int NOT NULL,
+  tag_id int NOT NULL
+);
+
+INSERT INTO tag_junction VALUES 
+(1, 9, 1),
+(2, 15, 2),
+(3, 16, 2),
+(4, 19, 3),
+(5, 20, 3);
+
+CREATE TABLE work (
+  ident int AUTO_INCREMENT PRIMARY KEY,
+  book_id int NOT NULL,
+  platform_id int NOT NULL,
+  memo varchar(30),
+  url varchar(300)
+);
+
+INSERT INTO work VALUES 
+(1, 12, 3, '漫画', 'https://www.amazon.co.jp/%E3%81%8B%E3%81%8C%E3%81%BF%E3%81%AE%E5%AD%A4%E5%9F%8E-1-%E3%83%A4%E3%83%B3%E3%82%B0%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%97%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9-%E6%AD%A6%E5%AF%8C-%E6%99%BA/dp/4088914503'),
+(2, 13, 2, 'yukkedoluce', 'https://www.youtube.com/watch?v=IE3Ws5gpooY'),
+(3, 14, 3, '', 'https://www.amazon.co.jp/%E3%82%8F%E3%81%9F%E3%81%97%E3%81%AE%E5%B9%B8%E3%81%9B%E3%81%AA%E7%B5%90%E5%A9%9A/dp/B0C9S3Y7CR'),
+(4, 15, 4, '', 'https://abema.tv/video/title/25-210'),
+(5, 16, 3, '公式', 'http://re-zero-anime.jp/'),
+(6, 17, 3, '映画', 'https://www.amazon.co.jp/gp/video/detail/amzn1.dv.gti.f8b6df3c-b1b1-d784-7708-573e3cd7e428?autoplay=0&ref_=atv_cf_strg_wb');
