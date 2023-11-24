@@ -77,3 +77,7 @@ function copyCode(e) {
 }
 
 </script>
+
+<?php
+require_once __DIR__ . '/footer.php';
+?>

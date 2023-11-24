@@ -296,3 +296,7 @@ $platforms = $book->getAllPlatform();
     }
 
 </script>
+
+<?php
+require_once __DIR__ . '/footer.php';
+?>
