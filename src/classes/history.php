@@ -3,6 +3,7 @@ require_once __DIR__ . '/dbdata.php';
 
 class History extends Dbdata
 {
+    // 閲覧履歴を更新
     public function updateHistory($bookId)
     {
         $sql = "SELECT * FROM history WHERE book_id = ?";
@@ -35,6 +36,7 @@ class History extends Dbdata
         }
     }
 
+    // 履歴を取得
     public function getHistory()
     {
         $sql = "SELECT history.history, book.ident, book.title, book.author, book.url FROM history JOIN book ON history.book_id = book.ident ORDER BY history.history";
@@ -43,6 +45,7 @@ class History extends Dbdata
         return $result;
     }
 
+    // 履歴をクリア
     public function clearHistory()
     {
         $sql = "TRUNCATE history";

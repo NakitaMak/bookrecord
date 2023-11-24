@@ -11,6 +11,7 @@ $platforms = $book->getAllPlatform();
 require_once __DIR__ . '/header.php';
 ?>
 <h4>編集</h4>
+<!-- 編集フォーム -->
 <form method="POST" action="update_db.php" class="input-form">
 
     <div>
@@ -281,6 +282,7 @@ require_once __DIR__ . '/header.php';
 
 </form>
 
+<!-- 作品詳細入力コピー用 -->
 <div style="display: none;">
 
 <div class="input_fandom" style="display: block;">

@@ -24,6 +24,7 @@ require_once __DIR__ . '/header.php';
 </select>
 </div>
 <div id="booklist">
+<!--ジャンル別一覧テーブル-->
 <table class="book-table">
 <?php 
 $genre = $book->getGenre($genreId);
@@ -33,6 +34,7 @@ echo '<tr><th colspan="8" style="background-color:' . $genre['color'] . ';">' . 
 echo '<tr class="even-row"><th>タイトル</th><th>作者</th><th>文字数(万)</th><th>リンク</th><th>アニメ<br>テーマ曲</th><th>朗読<br>ドラマCD</th><th>リマーク</th><th>詳細</th></tr>';
 $i = 0;
 foreach ($booklist as $bookinfo) {
+    // 偶数行の背景色を変える
     if ($i == 1) {
         echo '<tr class="even-row">';
         $i = 0;
@@ -61,6 +63,7 @@ foreach ($booklist as $bookinfo) {
 ?>
 </table>
 <br>
+<!-- ページバー -->
 <div class="pagination">
     <?php
     if ($page == 1) {

@@ -8,6 +8,7 @@ table {
     margin: auto;
 }
 
+/* ホームページのgif表示 */
 .animation-container {
     display: flex;
     background-color: #7ec4cc;
@@ -20,6 +21,7 @@ table {
     display: none;
 }
 
+/* メニューバー */
 .topnav {
     background-color: #333;
     overflow: hidden;
@@ -48,6 +50,7 @@ table {
     float: right;
 }
 
+/* 一覧のページ切り替え */
 .pagination {
     display: inline-block;
   }
@@ -70,6 +73,7 @@ table {
     border-radius: 5px;
 }
 
+/* ホームページの履歴テーブル */
 .history-table {
     table-layout: fixed;
     width: 90%;
@@ -82,6 +86,7 @@ table {
     margin: 8px;
 }
 
+/* 一覧テーブル */
 .book-table {
     width: 90%;
 }
@@ -122,12 +127,14 @@ table {
     background-color: #eeeeee;
 }
 
+/* タグ */
 .tag-span {
     border: 2px solid black;
     border-radius: 20px;
     padding: 1px 30px;
 }
 
+/* 詳細テーブル */
 .detail-table {
     border-collapse: collapse;
     width: 80%;
@@ -153,6 +160,7 @@ table {
     margin: auto;
 }
 
+/* 追加ページのフォーマット */
 .input-form label {
     display: inline-block;
     width: 40%;
@@ -172,6 +180,7 @@ table {
     margin: 10px auto;
 }
 
+/* 統計テーブル */
 .stat-table {
     margin: 2% auto;
     table-layout: fixed;

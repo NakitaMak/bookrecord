@@ -6,6 +6,7 @@ $genres = $book->getAllGenre();
 $tags = $book->getAllTag();
 $platforms = $book->getAllPlatform();
 ?>
+<!-- 入力フォーム -->
 <h4>インフォメーション</h4>
 <form method="POST" action="addbook_db.php" class="input-form">
     <div>
@@ -168,6 +169,7 @@ $platforms = $book->getAllPlatform();
     var addFandomButton = document.getElementById("add_fandom");
     var addDramaButton = document.getElementById("add_dramacd");
 
+    // 新しいジャンルが選択されたら、ジャンル名の入力ボックスとカラーピッカーを表示
     selectOptions.addEventListener("change", function () {
         if (selectOptions.value === "new") {
             customGenre.style.display = "inline-block";
@@ -180,6 +182,7 @@ $platforms = $book->getAllPlatform();
         }
     });
 
+    // 新しいタグの入力ボックスを追加
     function duplicateTag() {
         const tagInput = document.getElementById("new_tag");
         const clonedTagInput = tagInput.cloneNode(true);
@@ -191,6 +194,7 @@ $platforms = $book->getAllPlatform();
 
     addTagButton.addEventListener("click", duplicateTag);
     
+    // 映像作品があると選択されたら、作品詳細入力ボックスを表示
     selectFandom.forEach(function (selectFandom) {
         selectFandom.addEventListener("change", function () {
             if (selectFandom.value === "1") {
@@ -203,6 +207,7 @@ $platforms = $book->getAllPlatform();
         });
     });
     
+    // 音声作品があると選択されたら、作品詳細入力ボックスを表示
     selectDramaCD.forEach(function (selectDramaCD) {
         selectDramaCD.addEventListener("change", function () {
             if (selectDramaCD.value === "1") {
@@ -215,14 +220,7 @@ $platforms = $book->getAllPlatform();
         });
     });
 
-    function setupSelectFandom(selectElement) {
-        selectElement.addEventListener("change", newFandomPlatform);
-    }
-
-    function setupSelectDrama(selectElement) {
-        selectElement.addEventListener("change", newDramaPlatform);
-    }
-
+    // 映像作品詳細を追加
     function duplicateFandomRow() {
         const fandomRow = document.querySelector(".input_fandom");
         const clonedFandomRow = fandomRow.cloneNode(true);
@@ -238,6 +236,7 @@ $platforms = $book->getAllPlatform();
         document.getElementById("fandom_container").appendChild(clonedFandomRow);
     }
     
+    // 音声作品詳細を追加
     function duplicateDramaRow() {
         const dramaRow = document.querySelector(".input_dramacd");
         const clonedDramaRow = dramaRow.cloneNode(true);
@@ -253,9 +252,11 @@ $platforms = $book->getAllPlatform();
         document.getElementById("dramacd_container").appendChild(clonedDramaRow);
     }
 
+    // ボタンに関数を割り当てる
     addFandomButton.addEventListener("click", duplicateFandomRow);
     addDramaButton.addEventListener("click", duplicateDramaRow);
     
+    // 新しいプラットフォームが選択されたら、入力ボックスを表示（映像作品）
     function newFandomPlatform(event) {
         var selectValue = event.target.value;
         var customFandomPlatform = event.target.parentElement.querySelector('input[name="new_fandom_platform[]"]');
@@ -267,6 +268,7 @@ $platforms = $book->getAllPlatform();
         }
     }
 
+    // 新しいプラットフォームが選択されたら、入力ボックスを表示（音声作品）
     function newDramaPlatform() {
         var selectValue = event.target.value;
         var customDramaPlatform = event.target.parentElement.querySelector('input[name="new_dramacd_platform[]"]');
@@ -276,6 +278,15 @@ $platforms = $book->getAllPlatform();
         } else {
             customDramaPlatform.style.display = "none";
         }
+    }
+
+    // ドロップダウンリストに関数を割り当てる
+    function setupSelectFandom(selectElement) {
+        selectElement.addEventListener("change", newFandomPlatform);
+    }
+
+    function setupSelectDrama(selectElement) {
+        selectElement.addEventListener("change", newDramaPlatform);
     }
 
     var originalSelectElements = document.querySelectorAll('select[name="fandom_platform[]"]');
@@ -288,6 +299,7 @@ $platforms = $book->getAllPlatform();
         setupSelectDrama(select);
     });
 
+    // 入力をクリア
     function deleteDuplicate() {
         customGenre.style.display = "none";
         customColor.style.display = "none";

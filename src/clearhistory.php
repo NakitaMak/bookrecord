@@ -4,4 +4,7 @@ $history = new History();
 
 $history->clearHistory();
 
+// ホームページを再読み込み
 header("Location:index.php");
+
+?>

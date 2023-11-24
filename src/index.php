@@ -7,6 +7,7 @@
     </head>
 
     <body>
+        <!-- アニメーション -->
         <div class="animation-container">
             <img src="frame_0.jpg" id="opening">
         </div>
@@ -18,6 +19,7 @@
                 <a href="booklist.php?p=1" class="split">一覧</a>
             </div>
             <h2>閲覧履歴</h2>
+            <!-- 履歴テーブル -->
             <?php
             require_once __DIR__ . '/classes/history.php';
             $history = new History();
@@ -54,6 +56,7 @@
         </div>
 
         <script>
+            // gifを読み込み
             var animation = new Image();
             animation.src = 'opening.gif';
             animation.onload = function () {

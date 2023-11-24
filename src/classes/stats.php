@@ -3,6 +3,7 @@ require_once __DIR__ . '/dbdata.php';
 
 class Stats extends Dbdata
 {
+    // 完読した本の合計文字数
     public function wordCount()
     {
         $sql = "SELECT SUM(word_count) AS sum FROM book WHERE status = '2'";
@@ -11,6 +12,7 @@ class Stats extends Dbdata
         return $result;
     }
 
+    // 本の合計数
     public function bookCount()
     {
         $sql = "SELECT COUNT(*) AS count FROM book";
@@ -19,6 +21,7 @@ class Stats extends Dbdata
         return $result;
     }
 
+    // ステータス別の本の数
     public function bookStatusCount()
     {
         $sql = "SELECT status, COUNT(*) AS count FROM book GROUP BY status";
@@ -27,6 +30,7 @@ class Stats extends Dbdata
         return $result;
     }
 
+    // ジャンル別の本の数
     public function bookGenreCount()
     {
         $sql = "SELECT genre.name, COUNT(*) as count FROM book JOIN genre ON book.genre_id = genre.ident GROUP BY book.genre_id;";

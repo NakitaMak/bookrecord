@@ -70,6 +70,7 @@ $mascot = $_POST['mascot'];
 $remark = $_POST['remark'];
 $report = $_POST['report'];
 
+// SQLを実行
 $book->updateBook($bookId, $title, $author, $genre, $word, $url, $status, $cp, $fandom, $dramacd, $mascot, $remark);
 if (!empty($tag)) {
     $book->updateTagJunction($bookId, $tag);

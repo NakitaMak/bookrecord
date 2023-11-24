@@ -15,6 +15,7 @@ require_once __DIR__ . '/header.php';
 <h2 style="margin-left:10%;">詳細</h2>
 <a href="edit.php?bookid=<?= $bookInfo['ident'] ?>" style="float:right; margin:auto 10%"><button>編集</button></a>
 </div>
+<!-- 本の詳細テーブル -->
 <div>
     <table class="detail-table">
         <tr><th>タイトル：</th><td><?= $bookInfo['title'] ?></td></tr>
@@ -71,6 +72,7 @@ require_once __DIR__ . '/header.php';
 
 <script>
 
+// クリップボードにコピー
 function copyCode(e) {
     var code = e
     navigator.clipboard.writeText(code);

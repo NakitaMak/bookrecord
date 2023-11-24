@@ -7,6 +7,7 @@
     </head>
 
     <body>
+        <!-- メニューバー -->
         <div class="topnav">
             <a href="index.php" class="home">ホーム</a>
             <a href="bookstats.php" class="split">統計</a>
