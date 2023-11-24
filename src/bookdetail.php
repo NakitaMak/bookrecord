@@ -65,7 +65,7 @@ require_once __DIR__ . '/header.php';
         ?>
         <tr><th>代表的なもの：</th><td><?= $bookInfo['mascot'] ?></td></tr>
         <tr><th>リマーク：</th><td><?= $bookInfo['remark'] ?></td></tr>
-        <tr><th>感想：</th><td><?= $bookInfo['content'] ?></td></tr>
+        <tr><th>感想：</th><td><pre style="font-size: 16px;"><?= $bookInfo['content'] ?></pre></td></tr>
     </table>
 </div>
 
