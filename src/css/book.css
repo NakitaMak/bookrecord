@@ -118,6 +118,10 @@ table {
     width: 6%;
 }
 
+.even-row {
+    background-color: #eeeeee;
+}
+
 .tag-span {
     border: 2px solid black;
     border-radius: 20px;

@@ -152,10 +152,10 @@ require_once __DIR__ . '/header.php';
         <button type="button" id="add_fandom">＋</button>
         </div>
         <div id="fandom_container" style="display: block;">
-            <div style="display: block;">
             <?php
             foreach ($fandoms as $fandom) {
             ?>
+                <div style="display: block;">
                 <label for="fandom_platform" style="width:auto;">プラットフォーム：</label>
                 <select class="fandom_platform" name="fandom_platform[]">
                 <?php
@@ -177,10 +177,10 @@ require_once __DIR__ . '/header.php';
                 &emsp;
                 <label for="fandom_memo" style="width:auto;">メモ：</label>
                 <input type="text" name="fandom_memo[]" value="<?= $fandom['memo'] ?>">
+                </div>
             <?php
             }
             ?>
-            </div>
         </div>
     <?php
     }
@@ -227,10 +227,10 @@ require_once __DIR__ . '/header.php';
         <button type="button" id="add_dramacd">＋</button>
         </div>
         <div id="dramacd_container" style="display: block;">
-            <div style="display: block;">
             <?php
             foreach ($dramacds as $dramacd) {
             ?>
+                <div style="display: block;">
                 <label for="dramacd_platform" style="width:auto;">プラットフォーム：</label>
                 <select class="dramacd_platform" name="dramacd_platform[]">
                 <?php
@@ -252,10 +252,10 @@ require_once __DIR__ . '/header.php';
                 &emsp;
                 <label for="dramacd_code" style="width:auto;">メモ：</label>
                 <input type="text" name="dramacd_code[]" value="<?= $dramacd['code'] ?>">
+                </div>
             <?php
             }
             ?>
-            </div>
         </div>
     <?php
     }

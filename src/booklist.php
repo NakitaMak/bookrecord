@@ -26,15 +26,23 @@ require_once __DIR__ . '/header.php';
 $genreId = $booklist[0]['genre_id'];
 $genre = $book->getGenre($genreId);
 echo '<tr><th colspan="8" style="background-color:' . $genre['color'] . ';">' . $genre['name'] . '</th></tr>';
-echo '<tr><th>タイトル</th><th>作者</th><th>文字数(万)</th><th>リンク</th><th>アニメ<br>テーマ曲</th><th>朗読<br>ドラマCD</th><th>リマーク</th><th>詳細</th></tr>';
+echo '<tr class="even-row"><th>タイトル</th><th>作者</th><th>文字数(万)</th><th>リンク</th><th>アニメ<br>テーマ曲</th><th>朗読<br>ドラマCD</th><th>リマーク</th><th>詳細</th></tr>';
+$i = 0;
 foreach ($booklist as $bookinfo) {
     if ($bookinfo['genre_id'] != $genreId) {
         $genreId = $bookinfo['genre_id'];
         $genre = $book->getGenre($genreId);
         echo '<tr><th colspan="8" style="background-color:' . $genre['color'] . ';">' . $genre['name'] . '</th></tr>';
         echo '<tr><th>タイトル</th><th>作者</th><th>文字数(万)</th><th>リンク</th><th>アニメ<br>テーマ曲</th><th>朗読<br>ドラマCD</th><th>リマーク</th><th>詳細</th></tr>';
+        $i = 0;
     }
-    echo '<tr>';
+    if ($i == 1) {
+        echo '<tr class="even-row">';
+        $i = 0;
+    } else {
+        echo '<tr>';
+        $i++;
+    }
     echo '<td>' . $bookinfo['title'] . '</td>';
     echo '<td>' . $bookinfo['author'] . '</td>';
     echo '<td>' . $bookinfo['word_count'] . '</td>';
@@ -55,7 +63,7 @@ foreach ($booklist as $bookinfo) {
 }
 ?>
 </table>
-
+<br>
 <div class="pagination">
     <?php
     if ($page == 1) {
